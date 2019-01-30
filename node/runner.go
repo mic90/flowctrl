@@ -1,7 +1,6 @@
 package node
 
 import (
-	"context"
 	"flowctrl/uuid"
 	"fmt"
 )
@@ -13,7 +12,7 @@ type NodeInfo struct {
 }
 
 type Node interface {
-	Process(ctx context.Context)
+	Process()
 	Cleanup()
 	Info() NodeInfo
 }
@@ -25,17 +24,16 @@ type Runner struct {
 	inputs     []Port
 	outputs    []Port
 	connectors []*Connector
-	ctx        context.Context
 }
 
-func NewRunner(ctx context.Context, node Node) *Runner {
+func NewRunner(node Node) *Runner {
 	inputs := Ports(node, DirectionInput)
 	outputs := Ports(node, DirectionOutput)
 	connectors := Connectors(inputs)
 	info := node.Info()
 	id := uuid.New()
 	name := fmt.Sprintf("%s_%s_%d", info.Name, info.Version, id)
-	return &Runner{id, name, node, inputs, outputs, connectors, ctx}
+	return &Runner{id, name, node, inputs, outputs, connectors}
 }
 
 func (runner *Runner) Name() string {
@@ -54,7 +52,7 @@ func (runner *Runner) Process() error {
 	}
 
 	// run processing node
-	runner.node.Process(runner.ctx)
+	runner.node.Process()
 	return nil
 }
 
@@ -82,7 +80,7 @@ func (runner *Runner) processConnectors() error {
 
 	for i := 0; i < connectorsCount; i++ {
 		conn := runner.connectors[i]
-		err := conn.Trigger(runner.ctx)
+		err := conn.Trigger()
 		if err != nil {
 			return err
 		}

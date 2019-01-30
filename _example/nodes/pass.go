@@ -1,7 +1,6 @@
 package nodes
 
 import (
-	"context"
 	"flowctrl/buffer"
 	"flowctrl/buffer/adapter"
 	"flowctrl/node"
@@ -20,7 +19,7 @@ type Pass struct {
 func NewPass(name string) *Pass {
 	input := node.NewInputPort(buffer.Int8)
 	output := node.NewOutputPort(buffer.Int8)
-	info := node.NodeInfo{name, "description", "1.0.0"}
+	info := node.NodeInfo{Name: name, Description: "passes input dat to another node", Version: "1.0.0"}
 	return &Pass{info, input, output, adapter.NewInt8(input), adapter.NewInt8(output)}
 }
 
@@ -28,7 +27,7 @@ func (node *Pass) Info() node.NodeInfo {
 	return node.info
 }
 
-func (node *Pass) Process(ctx context.Context) {
+func (node *Pass) Process() {
 	read := node.reader.Get()
 	node.writer.Set(read)
 }

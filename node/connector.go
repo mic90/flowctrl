@@ -1,7 +1,6 @@
 package node
 
 import (
-	"context"
 	"errors"
 	"flowctrl/uuid"
 )
@@ -32,7 +31,7 @@ func (connector *Connector) ToUUID() uuid.Value {
 	return connector.to.UUID()
 }
 
-func (connector *Connector) Trigger(ctx context.Context) error {
+func (connector *Connector) Trigger() error {
 	// exit if no new data was received
 	if !connector.written {
 		return ErrNoInputData

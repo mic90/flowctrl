@@ -21,7 +21,7 @@ func makeRunners(nodes []node.Node) []*node.Runner {
 	runners := make([]*node.Runner, 0, nodesCount)
 	for i := 0; i < nodesCount; i++ {
 		n := nodes[i]
-		runner := node.NewRunner(nil, n)
+		runner := node.NewRunner(n)
 		runners = append(runners, runner)
 	}
 	return runners
