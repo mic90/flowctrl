@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-type Waiter interface {
+type TimedDelay interface {
 	WaitFor(duration time.Duration) bool
 }
 

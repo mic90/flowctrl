@@ -12,6 +12,10 @@ func NewContainer(parameters ...NamedReadWriter) *Container {
 	return &Container{Parameters: parameters}
 }
 
+func (c *Container) Size() int {
+	return len(c.Parameters)
+}
+
 func (c *Container) MarshalJSONArray(enc *gojay.Encoder) {
 	for _, parameter := range c.Parameters {
 		enc.Object(parameter)

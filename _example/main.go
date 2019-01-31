@@ -8,6 +8,8 @@ import (
 )
 
 func main() {
+
+
 	// create nodes
 	nodeA := nodes.NewPass("nodeA")
 	nodeB := nodes.NewPass("nodeB")
@@ -41,10 +43,10 @@ func main() {
 		if err != nil {
 			panic(err)
 		}
-		// wait for delayed node to propagate data
-		if endReader.Get() != 0 {
-			break
-		}
+		//// wait for delayed node to propagate data
+		//if endReader.Get() != 0 {
+		//	break
+		//}
 	}
 	log.Println("Final read:", endReader.Get())
 }

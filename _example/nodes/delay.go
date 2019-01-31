@@ -5,6 +5,7 @@ import (
 	"flowctrl/buffer"
 	"flowctrl/buffer/adapter"
 	"flowctrl/node"
+	"log"
 	"time"
 )
 
@@ -17,10 +18,10 @@ type Delay struct {
 	reader *adapter.Int8
 	writer *adapter.Int8
 
-	timer flowctrl.Waiter
+	timer flowctrl.TimedDelay
 }
 
-func NewDelay(timer flowctrl.Waiter) *Delay {
+func NewDelay(timer flowctrl.TimedDelay) *Delay {
 	input := node.NewInputPort(buffer.Int8)
 	output := node.NewOutputPort(buffer.Int8)
 	info := node.NodeInfo{Name:"delay", Description:"passed data to another node with delay", Version:"1.0.0"}
@@ -35,6 +36,7 @@ func (node *Delay) Process() {
 	if !node.timer.WaitFor(5*time.Second) {
 		return
 	}
+	log.Println("Delayed triggered")
 
 	read := node.reader.Get()
 	node.writer.Set(read)
