@@ -1,4 +1,4 @@
-module flowctrl
+module github.com/mic90/flowctrl
 
 require (
 	github.com/desertbit/timer v0.0.0-20180107155436-c41aec40b27f
