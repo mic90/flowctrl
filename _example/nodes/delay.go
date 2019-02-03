@@ -1,10 +1,10 @@
 package nodes
 
 import (
-	"flowctrl"
-	"flowctrl/buffer"
-	"flowctrl/buffer/adapter"
-	"flowctrl/node"
+	"github.com/mic90/flowctrl"
+	"github.com/mic90/flowctrl/buffer"
+	"github.com/mic90/flowctrl/buffer/adapter"
+	"github.com/mic90/flowctrl/node"
 	"log"
 	"time"
 )

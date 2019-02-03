@@ -1,8 +1,8 @@
 package node
 
 import (
-	"flowctrl/uuid"
 	"fmt"
+	"github.com/mic90/flowctrl/uuid"
 )
 
 type NodeInfo struct {

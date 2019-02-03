@@ -2,17 +2,17 @@ package adapter_test
 
 import (
 	"bytes"
-	"flowctrl/buffer"
-	"flowctrl/parameter"
-	"flowctrl/parameter/adapter"
 	"github.com/francoispqt/gojay"
+	"github.com/mic90/flowctrl/buffer"
+	"github.com/mic90/flowctrl/parameter"
+	"github.com/mic90/flowctrl/parameter/adapter"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )
 
 func TestFloat32_Write(t *testing.T) {
 	// GIVEN
-	param := adapter.NewFloat32(0, parameter.New(buffer.Float32,"param", "description", parameter.UnitNone, false, true))
+	param := adapter.NewFloat32(0, parameter.New(buffer.Float32, "param", "description", parameter.UnitNone, false, true))
 	expected := float32(123.1234)
 	//WHEN
 	param.Set(expected)
@@ -24,7 +24,7 @@ func TestFloat32_Write(t *testing.T) {
 func TestFloat32_MarshalJSON(t *testing.T) {
 	//GIVEN
 	expectedJSON := `{"name":"param","description":"description","unit":"%","readOnly":false,"userVisible":true,"raw":[46,63,246,66],"value":123.1234}`
-	param := adapter.NewFloat32(123.1234,parameter.New(buffer.Float32,"param", "description", parameter.UnitPercent, false, true))
+	param := adapter.NewFloat32(123.1234, parameter.New(buffer.Float32, "param", "description", parameter.UnitPercent, false, true))
 	//WHEN
 	buffer := bytes.Buffer{}
 	encoder := gojay.NewEncoder(&buffer)
@@ -37,7 +37,7 @@ func TestFloat32_MarshalJSON(t *testing.T) {
 func BenchmarkFloat32_MarshalJSON(b *testing.B) {
 	b.ReportAllocs()
 
-	param := adapter.NewFloat32(123, parameter.New(buffer.Float32,"param", "description", parameter.UnitPercent, false, true))
+	param := adapter.NewFloat32(123, parameter.New(buffer.Float32, "param", "description", parameter.UnitPercent, false, true))
 	buffer := &bytes.Buffer{}
 	buffer.Grow(100)
 	enc := gojay.NewEncoder(buffer)
@@ -54,7 +54,7 @@ func BenchmarkFloat32_MarshalJSON(b *testing.B) {
 func BenchmarkFloat32_Write(b *testing.B) {
 	b.ReportAllocs()
 
-	param := adapter.NewFloat32(0, parameter.New(buffer.Float32,"param", "description", parameter.UnitNone, false, true))
+	param := adapter.NewFloat32(0, parameter.New(buffer.Float32, "param", "description", parameter.UnitNone, false, true))
 	expected := float32(123.1234)
 
 	for i := 0; i < b.N; i++ {
@@ -65,7 +65,7 @@ func BenchmarkFloat32_Write(b *testing.B) {
 func BenchmarkFloat32_ParallelWrite(b *testing.B) {
 	b.ReportAllocs()
 
-	param := adapter.NewFloat32(0, parameter.New(buffer.Float32,"param", "description", parameter.UnitNone, false, true))
+	param := adapter.NewFloat32(0, parameter.New(buffer.Float32, "param", "description", parameter.UnitNone, false, true))
 	expected := float32(123.1234)
 
 	b.RunParallel(func(pb *testing.PB) {

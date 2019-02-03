@@ -1,16 +1,16 @@
 package adapter
 
 import (
-	"flowctrl/buffer/adapter"
-	"flowctrl/parameter"
 	"github.com/francoispqt/gojay"
+	"github.com/mic90/flowctrl/buffer/adapter"
+	"github.com/mic90/flowctrl/parameter"
 	"sync"
 )
 
 type Float32 struct {
 	parameter.NamedReadWriter
 	adapter *adapter.Float32
-	mutex *sync.RWMutex
+	mutex   *sync.RWMutex
 }
 
 func NewFloat32(value float32, parameter parameter.NamedReadWriter) *Float32 {

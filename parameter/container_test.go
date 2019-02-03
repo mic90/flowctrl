@@ -2,10 +2,10 @@ package parameter_test
 
 import (
 	"bytes"
-	"flowctrl/buffer"
-	"flowctrl/parameter"
-	"flowctrl/parameter/adapter"
 	"github.com/francoispqt/gojay"
+	"github.com/mic90/flowctrl/buffer"
+	"github.com/mic90/flowctrl/parameter"
+	"github.com/mic90/flowctrl/parameter/adapter"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )
@@ -14,8 +14,8 @@ func TestContainer_MarshalJSON(t *testing.T) {
 	//GIVEN
 	expectedJSON := `[{"name":"paramA","description":"description","unit":"","readOnly":false,"userVisible":true,"raw":[123],"value":123},{"name":"paramB","description":"description","unit":"%","readOnly":false,"userVisible":true,"raw":[0],"value":0},{"name":"paramC","description":"description","unit":"Hz","readOnly":false,"userVisible":true,"raw":[0],"value":0}]`
 	paramA := adapter.NewInt8(123, parameter.New(buffer.Int8, "paramA", "description", parameter.UnitNone, false, true))
-	paramB := adapter.NewInt8(0,  parameter.New(buffer.Int8,"paramB", "description", parameter.UnitPercent, false, true))
-	paramC := adapter.NewInt8(0, parameter.New(buffer.Int8,"paramC", "description", parameter.UnitHertz, false, true))
+	paramB := adapter.NewInt8(0, parameter.New(buffer.Int8, "paramB", "description", parameter.UnitPercent, false, true))
+	paramC := adapter.NewInt8(0, parameter.New(buffer.Int8, "paramC", "description", parameter.UnitHertz, false, true))
 	container := parameter.NewContainer(paramA, paramB, paramC)
 	//WHEN
 	buff := bytes.Buffer{}
@@ -46,16 +46,16 @@ func TestContainer_UnmarshalJSON(t *testing.T) {
 func BenchmarkContainer_MarshalJSON(b *testing.B) {
 	b.ReportAllocs()
 
-	paramA := adapter.NewInt8(0, parameter.New(buffer.Int8,"paramA", "description", parameter.UnitNone, false, true))
-	paramB := adapter.NewInt8(0, parameter.New(buffer.Int8,"paramB", "description", parameter.UnitPercent, false, true))
-	paramC := adapter.NewInt8(0, parameter.New(buffer.Int8,"paramC", "description", parameter.UnitHertz, false, true))
-	paramD := adapter.NewInt8(0, parameter.New(buffer.Int8,"paramD", "description", parameter.UnitHertz, false, true))
-	paramE := adapter.NewInt8(0, parameter.New(buffer.Int8,"paramE", "description", parameter.UnitHertz, false, true))
-	paramF := adapter.NewInt8(0, parameter.New(buffer.Int8,"paramF", "description", parameter.UnitHertz, false, true))
-	paramG := adapter.NewInt8(0, parameter.New(buffer.Int8,"paramG", "description", parameter.UnitHertz, false, true))
-	paramH := adapter.NewInt8(0, parameter.New(buffer.Int8,"paramH", "description", parameter.UnitHertz, false, true))
-	paramI := adapter.NewInt8(0, parameter.New(buffer.Int8,"paramI", "description", parameter.UnitHertz, false, true))
-	paramJ := adapter.NewInt8(0, parameter.New(buffer.Int8,"paramJ", "description", parameter.UnitHertz, false, true))
+	paramA := adapter.NewInt8(0, parameter.New(buffer.Int8, "paramA", "description", parameter.UnitNone, false, true))
+	paramB := adapter.NewInt8(0, parameter.New(buffer.Int8, "paramB", "description", parameter.UnitPercent, false, true))
+	paramC := adapter.NewInt8(0, parameter.New(buffer.Int8, "paramC", "description", parameter.UnitHertz, false, true))
+	paramD := adapter.NewInt8(0, parameter.New(buffer.Int8, "paramD", "description", parameter.UnitHertz, false, true))
+	paramE := adapter.NewInt8(0, parameter.New(buffer.Int8, "paramE", "description", parameter.UnitHertz, false, true))
+	paramF := adapter.NewInt8(0, parameter.New(buffer.Int8, "paramF", "description", parameter.UnitHertz, false, true))
+	paramG := adapter.NewInt8(0, parameter.New(buffer.Int8, "paramG", "description", parameter.UnitHertz, false, true))
+	paramH := adapter.NewInt8(0, parameter.New(buffer.Int8, "paramH", "description", parameter.UnitHertz, false, true))
+	paramI := adapter.NewInt8(0, parameter.New(buffer.Int8, "paramI", "description", parameter.UnitHertz, false, true))
+	paramJ := adapter.NewInt8(0, parameter.New(buffer.Int8, "paramJ", "description", parameter.UnitHertz, false, true))
 	container := parameter.NewContainer(paramA, paramB, paramC, paramD, paramE, paramF, paramG, paramH, paramI, paramJ)
 
 	buff := &bytes.Buffer{}

@@ -7,9 +7,9 @@ import (
 )
 
 type FileStore struct {
-	base *BaseStore
-	path string
-	mode os.FileMode
+	base  *BaseStore
+	path  string
+	mode  os.FileMode
 	mutex *sync.Mutex
 }
 

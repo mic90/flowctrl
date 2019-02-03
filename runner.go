@@ -1,8 +1,8 @@
 package flowctrl
 
 import (
-	"flowctrl/node"
 	"fmt"
+	"github.com/mic90/flowctrl/node"
 )
 
 type SerialRunner struct {

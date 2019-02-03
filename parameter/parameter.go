@@ -1,8 +1,8 @@
 package parameter
 
 import (
-	"flowctrl/buffer"
 	"github.com/francoispqt/gojay"
+	"github.com/mic90/flowctrl/buffer"
 	"unsafe"
 )
 

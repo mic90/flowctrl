@@ -2,7 +2,7 @@ package node
 
 import (
 	"errors"
-	"flowctrl/uuid"
+	"github.com/mic90/flowctrl/uuid"
 )
 
 var (

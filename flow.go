@@ -1,9 +1,9 @@
 package flowctrl
 
 import (
-	"flowctrl/graph"
-	"flowctrl/node"
-	"flowctrl/uuid"
+	"github.com/mic90/flowctrl/graph"
+	"github.com/mic90/flowctrl/node"
+	"github.com/mic90/flowctrl/uuid"
 )
 
 type Flow struct {

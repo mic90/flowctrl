@@ -2,17 +2,17 @@ package adapter_test
 
 import (
 	"bytes"
-	"flowctrl/buffer"
-	"flowctrl/parameter"
-	"flowctrl/parameter/adapter"
 	"github.com/francoispqt/gojay"
+	"github.com/mic90/flowctrl/buffer"
+	"github.com/mic90/flowctrl/parameter"
+	"github.com/mic90/flowctrl/parameter/adapter"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )
 
 func TestInt8_Write(t *testing.T) {
 	// GIVEN
-	param := adapter.NewInt8(0, parameter.New(buffer.Int8,"param", "description", parameter.UnitNone, false, true))
+	param := adapter.NewInt8(0, parameter.New(buffer.Int8, "param", "description", parameter.UnitNone, false, true))
 	expected := int8(123)
 	//WHEN
 	param.Set(expected)
@@ -24,7 +24,7 @@ func TestInt8_Write(t *testing.T) {
 func TestInt8_MarshalJSON(t *testing.T) {
 	//GIVEN
 	expectedJSON := `{"name":"param","description":"description","unit":"%","readOnly":false,"userVisible":true,"raw":[123],"value":123}`
-	param := adapter.NewInt8(123,parameter.New(buffer.Int8,"param", "description", parameter.UnitPercent, false, true))
+	param := adapter.NewInt8(123, parameter.New(buffer.Int8, "param", "description", parameter.UnitPercent, false, true))
 	//WHEN
 	buffer := bytes.Buffer{}
 	encoder := gojay.NewEncoder(&buffer)
@@ -37,7 +37,7 @@ func TestInt8_MarshalJSON(t *testing.T) {
 func BenchmarkInt8_MarshalJSON(b *testing.B) {
 	b.ReportAllocs()
 
-	param := adapter.NewInt8(123, parameter.New(buffer.Int8,"param", "description", parameter.UnitPercent, false, true))
+	param := adapter.NewInt8(123, parameter.New(buffer.Int8, "param", "description", parameter.UnitPercent, false, true))
 	buffer := &bytes.Buffer{}
 	buffer.Grow(100)
 	enc := gojay.NewEncoder(buffer)
@@ -54,7 +54,7 @@ func BenchmarkInt8_MarshalJSON(b *testing.B) {
 func BenchmarkInt8_Write(b *testing.B) {
 	b.ReportAllocs()
 
-	param := adapter.NewInt8(0, parameter.New(buffer.Int8,"param", "description", parameter.UnitNone, false, true))
+	param := adapter.NewInt8(0, parameter.New(buffer.Int8, "param", "description", parameter.UnitNone, false, true))
 	expected := int8(123)
 
 	for i := 0; i < b.N; i++ {
@@ -65,7 +65,7 @@ func BenchmarkInt8_Write(b *testing.B) {
 func BenchmarkInt8_ParallelWrite(b *testing.B) {
 	b.ReportAllocs()
 
-	param := adapter.NewInt8(0, parameter.New(buffer.Int8,"param", "description", parameter.UnitNone, false, true))
+	param := adapter.NewInt8(0, parameter.New(buffer.Int8, "param", "description", parameter.UnitNone, false, true))
 	expected := int8(123)
 
 	b.RunParallel(func(pb *testing.PB) {

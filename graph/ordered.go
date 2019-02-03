@@ -1,8 +1,8 @@
 package graph
 
 import (
-	"flowctrl/node"
-	"flowctrl/uuid"
+	"github.com/mic90/flowctrl/node"
+	"github.com/mic90/flowctrl/uuid"
 )
 
 type Ordered struct {

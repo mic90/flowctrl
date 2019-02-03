@@ -1,16 +1,16 @@
 package adapter
 
 import (
-	"flowctrl/buffer/adapter"
-	"flowctrl/parameter"
 	"github.com/francoispqt/gojay"
+	"github.com/mic90/flowctrl/buffer/adapter"
+	"github.com/mic90/flowctrl/parameter"
 	"sync"
 )
 
 type Int8 struct {
 	parameter.NamedReadWriter
 	adapter *adapter.Int8
-	mutex *sync.RWMutex
+	mutex   *sync.RWMutex
 }
 
 func NewInt8(value int8, parameter parameter.NamedReadWriter) *Int8 {

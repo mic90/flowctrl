@@ -73,4 +73,3 @@ func (store *BaseStore) Restore(container *Container) error {
 	}
 	return nil
 }
-

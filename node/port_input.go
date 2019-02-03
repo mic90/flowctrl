@@ -1,8 +1,8 @@
 package node
 
 import (
-	"flowctrl/buffer"
-	"flowctrl/uuid"
+	"github.com/mic90/flowctrl/buffer"
+	"github.com/mic90/flowctrl/uuid"
 )
 
 type InputPort struct {

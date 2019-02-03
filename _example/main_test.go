@@ -1,9 +1,9 @@
 package main
 
 import (
-	"flowctrl"
-	"flowctrl/_example/nodes"
-	"flowctrl/buffer/adapter"
+	"github.com/mic90/flowctrl"
+	"github.com/mic90/flowctrl/_example/nodes"
+	"github.com/mic90/flowctrl/buffer/adapter"
 	"testing"
 )
 

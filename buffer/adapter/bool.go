@@ -1,7 +1,7 @@
 package adapter
 
 import (
-	"flowctrl/buffer"
+	"github.com/mic90/flowctrl/buffer"
 	"unsafe"
 )
 

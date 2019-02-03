@@ -1,7 +1,7 @@
 package uuid_test
 
 import (
-	"flowctrl/uuid"
+	"github.com/mic90/flowctrl/uuid"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )
