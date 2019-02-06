@@ -2,20 +2,9 @@ package node
 
 import (
 	"fmt"
+
 	"github.com/mic90/flowctrl/uuid"
 )
-
-type NodeInfo struct {
-	Name        string
-	Description string
-	Version     string
-}
-
-type Node interface {
-	Process()
-	Cleanup()
-	Info() NodeInfo
-}
 
 type Runner struct {
 	uuid       uuid.Value

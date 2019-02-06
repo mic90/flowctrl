@@ -17,14 +17,22 @@ func NewOrdered(root *node.Runner, mapped map[uuid.Value]*node.Runner) *Ordered 
 }
 
 func (ordered *Ordered) build(mapped map[uuid.Value]*node.Runner) {
-	ordered.buildRecursive(ordered.root, mapped)
+	addedMap := make(map[uuid.Value]bool)
+	ordered.buildRecursive(ordered.root, mapped, addedMap)
 }
 
-func (ordered *Ordered) buildRecursive(node *node.Runner, mapped map[uuid.Value]*node.Runner) {
+func (ordered *Ordered) buildRecursive(node *node.Runner, mapped map[uuid.Value]*node.Runner, added map[uuid.Value]bool) {
 	connectors := node.Connectors()
 	for i := 0; i < len(connectors); i++ {
-		baseRunner := mapped[connectors[i].FromUUID()]
-		ordered.buildRecursive(baseRunner, mapped)
+		baseRunner, ok := mapped[connectors[i].FromUUID()]
+		if !ok {
+			panic("failed to find runner by output ID")
+		}
+		ordered.buildRecursive(baseRunner, mapped, added)
 	}
-	ordered.Runners = append(ordered.Runners, node)
+	// add node only if it wasn't already added
+	if _, ok := added[node.UUID()]; !ok {
+		ordered.Runners = append(ordered.Runners, node)
+		added[node.UUID()] = true
+	}
 }
